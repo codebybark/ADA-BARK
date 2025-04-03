@@ -1,0 +1,44 @@
+from instagrapi import Client
+from time import sleep
+
+# Replace with your Instagram credentials
+USERNAME = "your_username"
+PASSWORD = "your_password"
+
+# List of usernames Ada would follow
+usernames_to_follow = [
+    "warriorpoetsociety", "tacticalbastard", "cryeprecision", "nine_line_apparel", "goruck",
+    "pewpewtactical", "triarcsystems", "tactical_distributors", "magpul", "sofletehq",
+    "cyberpunkgame", "ghostintheshell", "augmentations", "hideo_kojima", "cdpred",
+    "neontalk", "cyberpunk2077.city", "elixircyberpunk", "liquidcyberpunk", "techwear.looks",
+    "easternbloc", "post_soviet_aesthetics", "coldwarmagazine", "brutgroup", "slavsquat",
+    "soviet.visuals", "kalashnikov.group", "kazakh.view", "rus_mil_art", "chernobyl_guide",
+    "acoldwall", "techwear.intern", "gothictechwear", "rickowensonline", "helmutlang",
+    "darkwear_fashion", "militaryvibes", "cyberdogofficial", "acronym_official", "blvckparis",
+    "liquidverve", "brandontakesphotos", "peterlindbergh", "vuhlandes", "ryanmuirhead",
+    "neonnoir.mag", "joelfentonphoto", "cinestillfilm", "sashalevin", "noir.camera",
+    "ptsdsupportandawareness", "woundedwarriorproject", "mentalhealthamerica", "headstrongproject", "mission_22",
+    "mentalhealthmemes", "realdepressionproject", "thefightwithinher", "broken_light_collective", "mentalhealthmatch",
+    "agentprovocateur", "playboy", "savagexfenty", "lasciviouslingerie", "bondagecouture",
+    "fleurdu.mal", "intimissimi", "victoriassecret", "nudamag", "darkromance",
+    "love.death.and.robots", "witchernetflix", "blackmirror.netflix", "atomicblondemovie", "theboys",
+    "netflixdark", "johnwickmovie", "killbillofficial", "matrixmovie", "strangerthingstv",
+    "smirnoff", "absolutvodka", "stoli", "greygoose", "vodka_soda",
+    "cocktailchemistry", "licensed_to_distill", "thevodkapost", "thetipsybartender", "imbibe",
+    "shitheadsteve", "daquan", "sarcasm_only", "epicfunnypage", "dankmemes",
+    "girlswithguns", "scarymommy", "bitch", "worst.buy", "overheardla"
+]
+
+# Initialize client and log in
+cl = Client()
+cl.login(USERNAME, PASSWORD)
+
+# Follow each user
+for username in usernames_to_follow:
+    try:
+        user_id = cl.user_id_from_username(username)
+        cl.user_follow(user_id)
+        print(f"Followed: {username}")
+    except Exception as e:
+        print(f"Error following {username}: {e}")
+    sleep(5)  # Delay to prevent account action blocks
